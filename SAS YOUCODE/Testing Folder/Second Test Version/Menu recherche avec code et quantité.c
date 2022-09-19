@@ -13,16 +13,18 @@ struct product products[100];
 
 int chosenItem, numberOfProducts = 0;
 
+int compare();
 void showMenu();
 void addAProduct();
 void showPage(int chosenItem);
 void chooseAnItem();
 void addMultipleProducts();
 void ShowProducts();
-int compare();
 void FindProductByCode();
 void FindProductByQuantity();
-
+void BuyAProduct();
+void AddToStock();
+void StateOfStock();
 
 
 int main()
@@ -86,7 +88,7 @@ void showPage(int chosenItem) {
             break;
         case 4 :
             system("cls");
-            printf("Acheter un produit");
+            BuyAProduct();
             break;
         case 5 :
             system("cls");
@@ -107,15 +109,15 @@ void showPage(int chosenItem) {
             break;
         case 6 :
             system("cls");
-            printf("Etat du stock");
+            StateOfStock();
             break;
         case 7 :
             system("cls");
-            printf("Ajouter au stock");
+            AddToStock();
             break;
         case 8 :
             system("cls");
-            printf("Supprimer un produit");
+            printf("Supprimer produit");
             break;
         case 9 :
             system("cls");
@@ -218,7 +220,7 @@ void FindProductByCode(){
 	
 	for(i=0;i<numberOfProducts;i++){
 		if (strcmp(products[i].code,ProductCode) == 0 )
-		printf("\n->Code du produit : %s\ t->Nom du produit :%s\t ->Prix du produit en HT :%.2f\t ->Prix du produit en TTC :%.2f\n", products[i].code,products[i].name,products[i].price,products[i].price +((products[i].price)*0.15));
+		printf("\n->Code du produit : %s\t ->Nom du produit :%s\t ->Quantite du produit : %d\t ->Prix du produit en HT :%.2f\t ->Prix du produit en TTC :%.2f\n", products[i].code,products[i].name,products[i].quantity,products[i].price,products[i].price +((products[i].price)*0.15));
 	}
 	system("Pause");
 	system("cls");
@@ -236,6 +238,69 @@ void FindProductByQuantity(){
 	for(i=0;i<numberOfProducts;i++){
 		if (products[i].quantity==ProductQuantity )
 		printf("\n->Quantite du produit : %d \t ->Code du produit : %s \n->Nom du produit :%s\t ->Prix du produit en HT :%.2f\t->Prix du produit en TTC :%.2f\n", products[i].quantity,products[i].code,products[i].name,products[i].price,products[i].price +((products[i].price)*0.15));
+	}
+	system("Pause");
+	system("cls");
+	showMenu();
+	chooseAnItem();
+}
+//fontion acheter un produit / deduire du stock
+void BuyAProduct(){
+	//find product by code
+	char ProductCode[20];
+	int i;
+	int number;
+	int x;
+	printf("Entrer le Code du produit : ");
+	scanf("%s",ProductCode);
+
+	for(i=0;i<numberOfProducts;i++){
+		if (strcmp(products[i].code,ProductCode) == 0 ){
+		x=i;// ajouter pour stocker l indice du produit
+		printf("\n->Code du produit : %s\t ->Nom du produit :%s\t ->Quantite du produit : %d\t ->Prix du produit en HT :%.2f\t ->Prix du produit en TTC :%.2f\n", products[i].code,products[i].name,products[i].quantity,products[i].price,products[i].price +((products[i].price)*0.15));
+		}
+	}
+	printf("\n->Entrer la valeur a deduir du stock :\n");
+	scanf("%d",&number);
+	printf("\n->La valeur dans le stock est maintenant: %d\n",products[x].quantity-=number);
+	system("Pause");
+	system("cls");
+	showMenu();
+	chooseAnItem();
+}
+//fonction ajouter au stock
+void AddToStock(){
+	//find product by code
+	char ProductCode[20];
+	int i;
+	int number;
+	int x;
+	printf("Entrer le Code du produit : ");
+	scanf("%s",ProductCode);
+
+	for(i=0;i<numberOfProducts;i++){
+		if (strcmp(products[i].code,ProductCode) == 0 ){
+		x=i;// ajouter pour stocker l indice du produit
+		printf("\n->Code du produit : %s\t ->Nom du produit :%s\t ->Quantite du produit : %d\t ->Prix du produit en HT :%.2f\t ->Prix du produit en TTC :%.2f\n", products[i].code,products[i].name,products[i].quantity,products[i].price,products[i].price +((products[i].price)*0.15));
+		}
+	}
+	printf("\n->Entrer la valeur a ajouter au stock :\n");
+	scanf("%d",&number);
+	printf("\n->La valeur dans le stock est maintenant: %d\n",products[x].quantity+=number);
+	system("Pause");
+	system("cls");
+	showMenu();
+	chooseAnItem();
+}
+
+//fonction pour afficher l etat du stock les produits<3
+void StateOfStock(){
+	int i;
+	
+	for(i=0;i<numberOfProducts;i++){
+		if (products[i].quantity<3){
+			printf("\n->Code du produit : %s\t ->Nom du produit :%s\t ->Quantite du produit : %d\t ->Prix du produit en HT :%.2f\t ->Prix du produit en TTC :%.2f\n", products[i].code,products[i].name,products[i].quantity,products[i].price,products[i].price +((products[i].price)*0.15));
+		}
 	}
 	system("Pause");
 	system("cls");
