@@ -1,6 +1,6 @@
 #include <stdio.h> 
 #include<stdlib.h>
-
+#include <string.h>
 struct product {
 	float price;
     char code[20];
@@ -20,6 +20,8 @@ void chooseAnItem();
 void addMultipleProducts();
 void ShowProducts();
 int compare();
+void FindProductByCode();
+void FindProductByQuantity();
 
 
 
@@ -88,7 +90,20 @@ void showPage(int chosenItem) {
             break;
         case 5 :
             system("cls");
-            printf("Chercher un produit");
+            int num;
+            printf("\n> [1] Chercher avec Code");
+            printf("\n> [2] Chercher avec Quantite");
+            scanf("%d",&num);
+            switch (num){
+            	case 1:
+            		system("cls");
+            		FindProductByCode();
+            		break;
+            	case 2:
+            		system("cls");
+					FindProductByQuantity();
+					break;	
+			}
             break;
         case 6 :
             system("cls");
@@ -108,7 +123,7 @@ void showPage(int chosenItem) {
             break;
         default :
             system("cls");
-            printf("Please choose from the menu! \n");
+            printf("Merci de choisir du MENU! \n");
             showMenu();
             break;
     }
@@ -193,5 +208,37 @@ int compare(const void *x_void, const void *y_void)
   return y - x;
 }
 
-
-
+//rechercher un produit avec son code
+void FindProductByCode(){
+	char ProductCode[20];
+	int i;
+	
+	printf("Entrer le Code du produit : ");
+	scanf("%s",ProductCode);
+	
+	for(i=0;i<numberOfProducts;i++){
+		if (strcmp(products[i].code,ProductCode) == 0 )
+		printf("\n->Code du produit : %s\ t->Nom du produit :%s\t ->Prix du produit en HT :%.2f\t ->Prix du produit en TTC :%.2f\n", products[i].code,products[i].name,products[i].price,products[i].price +((products[i].price)*0.15));
+	}
+	system("Pause");
+	system("cls");
+	showMenu();
+	chooseAnItem();
+}
+//recher un produit avec la quantité
+void FindProductByQuantity(){
+	int ProductQuantity;
+	int i;
+	
+	printf("Entrer la Quantite du produit : ");
+	scanf("%d",&ProductQuantity);
+	
+	for(i=0;i<numberOfProducts;i++){
+		if (products[i].quantity==ProductQuantity )
+		printf("\n->Quantite du produit : %d \t ->Code du produit : %s \n->Nom du produit :%s\t ->Prix du produit en HT :%.2f\t->Prix du produit en TTC :%.2f\n", products[i].quantity,products[i].code,products[i].name,products[i].price,products[i].price +((products[i].price)*0.15));
+	}
+	system("Pause");
+	system("cls");
+	showMenu();
+	chooseAnItem();
+}

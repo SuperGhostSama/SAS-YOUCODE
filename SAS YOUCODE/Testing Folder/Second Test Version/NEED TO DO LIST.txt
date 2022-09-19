@@ -1,0 +1,10 @@
+    printf("\n\t---  MENU  ---\n");
+    printf("\n> [1] Ajouter un nouveau produit"); X
+    printf("\n> [2] Ajouter plusieurs produits"); X
+    printf("\n> [3] Afficher tout les produits"); X DECROISSANT PAR PRIX
+    printf("\n> [4] Acheter un produit");
+    printf("\n> [5] Chercher un produit"); X PAR CODE ET QUANTITE
+    printf("\n> [6] Etat du stock");
+    printf("\n> [7] Ajouter au stock");
+    printf("\n> [8] Supprimer un produit");
+    printf("\n> [9] Afficher les statistiques");
