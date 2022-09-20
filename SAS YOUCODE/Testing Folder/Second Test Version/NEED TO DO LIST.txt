@@ -1,8 +1,8 @@
     printf("\n\t---  MENU  ---\n");
     printf("\n> [1] Ajouter un nouveau produit"); X
     printf("\n> [2] Ajouter plusieurs produits"); X
-    printf("\n> [3] Afficher tout les produits"); X DECROISSANT PAR PRIX
-    printf("\n> [4] Acheter un produit");X SANS HORRAIRE
+    printf("\n> [3] Afficher tout les produits"); X DECROISSANT PAR PRIX / IL MANQUE TRIAGE ALPHABETIQUEMENT
+    printf("\n> [4] Acheter un produit");X /IL MANQUE L HORRAIRE HORRAIRE
     printf("\n> [5] Chercher un produit"); X PAR CODE ET QUANTITE
     printf("\n> [6] Etat du stock");X
     printf("\n> [7] Ajouter au stock");X RECHERCHE AVEC CODE

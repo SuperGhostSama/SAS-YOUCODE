@@ -34,6 +34,7 @@ int main()
 }
 // AFFICHAGE DE MENU
 void showMenu(){
+	system("Color 9");//code couleur 9 = Light Blue
     printf("\n\t---  MENU  ---\n");
     printf("\n> [1] Ajouter un nouveau produit");
     printf("\n> [2] Ajouter plusieurs produits");
@@ -47,24 +48,25 @@ void showMenu(){
 }
 // FONCTION D AJOUT D UN SEUL PRODUIT
 void addAProduct(){
-    printf("Ajouter un produit :\n\n");
+	
+    printf("\n->Ajouter un produit :\n\n");
     
-    printf("Entrer le code du produit :\n=> ");
+    printf("\n->Entrer le code du produit :\n=> ");
     scanf("%s", products[numberOfProducts].code);
     
-    printf("Entrer le nom du produit :\n=> ");
+    printf("\n->Entrer le nom du produit :\n=> ");
     scanf("%s", products[numberOfProducts].name);
     
-    printf("Entrer la quantite du produit:\n=> ");
+    printf("\n->Entrer la quantite du produit:\n=> ");
     scanf("%d", &products[numberOfProducts].quantity);
     
-    printf("Entrer le prix du produit (HT):\n=> ");
+    printf("\n->Entrer le prix du produit (HT):\n=> ");
     scanf("%f", &products[numberOfProducts].price);
     
     numberOfProducts++;
     
     system("cls");
-    printf("Produit ajouter avec succees !! \n\n");
+    printf("\n->Produit ajouter avec succees !! \n\n");
     
     showMenu();
     chooseAnItem();
@@ -117,16 +119,30 @@ void showPage(int chosenItem) {
             break;
         case 8 :
             system("cls");
-            printf("Supprimer produit");
+            system("Color 4");//Code couleur 4 = Red
+            printf("\n\t---  SUPPRIMER PRODUIT  ---\n");
+            system("Pause");
+			system("cls");
+			showMenu();
+			chooseAnItem();
             break;
         case 9 :
             system("cls");
-            printf("Afficher les statistiques");
+            system("Color 4");//Code couleur 4 = Red
+            printf("\n\t---  AFFICHER LES STATISTIQUES  ---\n");
+            system("Pause");
+			system("cls");
+			showMenu();
+			chooseAnItem();
             break;
         default :
             system("cls");
-            printf("Merci de choisir du MENU! \n");
-            showMenu();
+            system("Color 4");//Code couleur 4 = Red
+            printf("\n\t---  MERCI DE CHOISIR DU MENU  ---\n");
+            system("Pause");
+			system("cls");
+			showMenu();
+			chooseAnItem();
             break;
     }
 }
@@ -150,24 +166,24 @@ void addMultipleProducts(){
 	scanf("%d",&n);
 	for(i=0;i<n;i++){
 
-	printf("Ajouter un produit :\n\n");
+	printf("\n->Ajouter un produit :\n\n");
     
-    printf("Entrer le code du produit :\n=> ");
+    printf("\n->Entrer le code du produit :\n=> ");
     scanf("%s", products[numberOfProducts].code);
     
-    printf("Entrer le nom du produit :\n=> ");
+    printf("\n->Entrer le nom du produit :\n=> ");
     scanf("%s", products[numberOfProducts].name);
     
-    printf("Entrer la quantite du produit:\n=> ");
+    printf("\n->Entrer la quantite du produit:\n=> ");
     scanf("%d", &products[numberOfProducts].quantity);
     
-    printf("Entrer le prix du produit (HT):\n=> ");
+    printf("\n->Entrer le prix du produit (HT):\n=> ");
     scanf("%f", &products[numberOfProducts].price);
     
     numberOfProducts++;
     
     system("cls");
-    printf("Produit ajouter avec succees !! \n\n");
+    printf("\n->Produit ajouter avec succees !! \n\n");
 		
 	}
 	sleep(1);
@@ -180,6 +196,7 @@ void addMultipleProducts(){
 void ShowProducts(){
 	//if : pour si il n y a pas de produit ajouter sur le systeme sa retourne au menu automatiquement apres 4 secondes
 	if(numberOfProducts==0){
+		system("Color 4");//Code couleur 4 = Red
 		printf("\n>Il n y a pas de produit dans le systeme...Retour au menu");	
 		sleep(4);
 		system("cls");
@@ -215,7 +232,7 @@ void FindProductByCode(){
 	char ProductCode[20];
 	int i;
 	
-	printf("Entrer le Code du produit : ");
+	printf("\n->Entrer le Code du produit : ");
 	scanf("%s",ProductCode);
 	
 	for(i=0;i<numberOfProducts;i++){
@@ -232,7 +249,7 @@ void FindProductByQuantity(){
 	int ProductQuantity;
 	int i;
 	
-	printf("Entrer la Quantite du produit : ");
+	printf("\n->Entrer la Quantite du produit : ");
 	scanf("%d",&ProductQuantity);
 	
 	for(i=0;i<numberOfProducts;i++){
@@ -251,7 +268,7 @@ void BuyAProduct(){
 	int i;
 	int number;
 	int x;
-	printf("Entrer le Code du produit : ");
+	printf("\n->Entrer le Code du produit : ");
 	scanf("%s",ProductCode);
 
 	for(i=0;i<numberOfProducts;i++){
@@ -275,7 +292,7 @@ void AddToStock(){
 	int i;
 	int number;
 	int x;
-	printf("Entrer le Code du produit : ");
+	printf("\n->Entrer le Code du produit : ");
 	scanf("%s",ProductCode);
 
 	for(i=0;i<numberOfProducts;i++){
