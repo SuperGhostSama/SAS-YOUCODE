@@ -1,6 +1,7 @@
 #include <stdio.h> 
 #include<stdlib.h>
 #include <string.h>
+#include <time.h>
 struct product {
 	float price;
     char code[20];
@@ -25,7 +26,7 @@ void FindProductByQuantity();
 void BuyAProduct();
 void AddToStock();
 void StateOfStock();
-
+void Time(); //affichage de temps actuel avec la date
 
 int main()
 {
@@ -280,6 +281,7 @@ void BuyAProduct(){
 	printf("\n->Entrer la valeur a deduir du stock :\n");
 	scanf("%d",&number);
 	printf("\n->La valeur dans le stock est maintenant: %d\n",products[x].quantity-=number);
+	Time();
 	system("Pause");
 	system("cls");
 	showMenu();
@@ -301,9 +303,9 @@ void AddToStock(){
 		printf("\n->Code du produit : %s\t ->Nom du produit :%s\t ->Quantite du produit : %d\t ->Prix du produit en HT :%.2f\t ->Prix du produit en TTC :%.2f\n", products[i].code,products[i].name,products[i].quantity,products[i].price,products[i].price +((products[i].price)*0.15));
 		}
 	}
-	printf("\n->Entrer la valeur a ajouter au stock :\n");
+	printf("\n->Entrer la valeur a ajouter au stock :");
 	scanf("%d",&number);
-	printf("\n->La valeur dans le stock est maintenant: %d\n",products[x].quantity+=number);
+	printf("\n-> La Valeur dans le stock est maintenant: %d\n",products[x].quantity+=number);
 	system("Pause");
 	system("cls");
 	showMenu();
@@ -323,4 +325,30 @@ void StateOfStock(){
 	system("cls");
 	showMenu();
 	chooseAnItem();
+}
+
+//FONCTION AFFICHAGE DE TEMPS
+void Time(){
+  int h, min, s, day, mois, an;
+  time_t now;
+    
+  // Renvoie l'heure actuelle
+  time(&now);
+
+  // Convertir au format heure locale
+  printf("\n-> Aujourd'hui est : %s", ctime(&now));
+
+  struct tm *local = localtime(&now);
+  h = local->tm_hour;        
+  min = local->tm_min;       
+  s = local->tm_sec;       
+  day = local->tm_mday;          
+  mois = local->tm_mon + 1; // on ajoute +1 car sa commence de 0 
+  an = local->tm_year + 1900;  
+;
+  printf("\n-> L'heure : %02d:%02d:%02d\n", h, min, s);
+
+  // Afficher la date courante
+  printf("\n-> La date : %02d/%02d/%d\n", day, mois, an);
+	
 }
