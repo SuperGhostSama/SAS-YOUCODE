@@ -27,13 +27,15 @@ void BuyAProduct();
 void AddToStock();
 void StateOfStock();
 void Time(); //affichage de temps actuel avec la date
+void Statistique();//not completed
+
 
 int main()
 {
     showMenu();
     chooseAnItem();
 }
-// AFFICHAGE DE MENU
+//1- AFFICHAGE DE MENU
 void showMenu(){
 	system("Color 9");//code couleur 9 = Light Blue
     printf("\n\t---  MENU  ---\n");
@@ -47,33 +49,47 @@ void showMenu(){
     printf("\n> [8] Supprimer un produit");
     printf("\n> [9] Afficher les statistiques");
 }
-// FONCTION D AJOUT D UN SEUL PRODUIT
+//2- FONCTION DE CHOIX SUR LE MENU QUI AJOUTE UN PRINTF ET SCANF POUR SELECTIONNER LE NUMERO
+void chooseAnItem(){
+    do {
+        printf("\n=> ");
+        scanf("%d", &chosenItem);
+        
+        showPage(chosenItem);
+        
+    } while(chosenItem < 1 || chosenItem > 9);
+
+}
+
+//3- FONCTION D AJOUT D UN SEUL PRODUIT
 void addAProduct(){
 	
-    printf("\n->Ajouter un produit :\n\n");
+    printf("\n\t---  Ajouter un produit  ---\n");
     
-    printf("\n->Entrer le code du produit :\n=> ");
+    printf("\n-> Entrer le code du produit :\n=> ");
     scanf("%s", products[numberOfProducts].code);
     
-    printf("\n->Entrer le nom du produit :\n=> ");
+    printf("\n-> Entrer le nom du produit :\n=> ");
     scanf("%s", products[numberOfProducts].name);
     
-    printf("\n->Entrer la quantite du produit:\n=> ");
+    printf("\n-> Entrer la quantite du produit:\n=> ");
     scanf("%d", &products[numberOfProducts].quantity);
     
-    printf("\n->Entrer le prix du produit (HT):\n=> ");
+    printf("\n-> Entrer le prix du produit (HT):\n=> ");
     scanf("%f", &products[numberOfProducts].price);
     
     numberOfProducts++;
     
-    system("cls");
-    printf("\n->Produit ajouter avec succees !! \n\n");
     
+    printf("\n->Produit ajouter avec succees !! \n\n");
+    system("Pause");
+    system("cls");
     showMenu();
     chooseAnItem();
     
 }
-// FONCTION DE SWITCH POUR ACCEDER AU CHOIX SUR LE MENU
+
+//4- FONCTION DE SWITCH POUR ACCEDER AU CHOIX SUR LE MENU
 void showPage(int chosenItem) {
     
     switch(chosenItem){
@@ -129,8 +145,8 @@ void showPage(int chosenItem) {
             break;
         case 9 :
             system("cls");
-            system("Color 4");//Code couleur 4 = Red
-            printf("\n\t---  AFFICHER LES STATISTIQUES  ---\n");
+            system("Color 4");//Code couleur 4 = Red / je l ai afficher en rouge car la fonction de statistique n est pas complété est juste provisoir
+            Statistique();
             system("Pause");
 			system("cls");
 			showMenu();
@@ -147,19 +163,7 @@ void showPage(int chosenItem) {
             break;
     }
 }
-//FONCTION DE CHOIX SUR LE MENU QUI AJOUTE UN PRINTF ET SCANF POUR SELECTIONNER LE NUMERO
-void chooseAnItem(){
-    do {
-        printf("\n=> ");
-        scanf("%d", &chosenItem);
-        
-        showPage(chosenItem);
-        
-    } while(chosenItem < 1 || chosenItem > 9);
-
-}
-
-//FONCTION D AJOUT DE PLUSIEUR PRODUIT
+//5- FONCTION D AJOUT DE PLUSIEUR PRODUIT
 void addMultipleProducts(){
 	int i;
 	int n;
@@ -167,24 +171,24 @@ void addMultipleProducts(){
 	scanf("%d",&n);
 	for(i=0;i<n;i++){
 
-	printf("\n->Ajouter un produit :\n\n");
+	printf("\n\t---  Ajouter un produit  ---\n");
     
-    printf("\n->Entrer le code du produit :\n=> ");
+    printf("\n-> Entrer le code du produit :\n=> ");
     scanf("%s", products[numberOfProducts].code);
     
-    printf("\n->Entrer le nom du produit :\n=> ");
+    printf("\n-> Entrer le nom du produit :\n=> ");
     scanf("%s", products[numberOfProducts].name);
     
-    printf("\n->Entrer la quantite du produit:\n=> ");
+    printf("\n-> Entrer la quantite du produit:\n=> ");
     scanf("%d", &products[numberOfProducts].quantity);
     
-    printf("\n->Entrer le prix du produit (HT):\n=> ");
+    printf("\n-> Entrer le prix du produit (HT):\n=> ");
     scanf("%f", &products[numberOfProducts].price);
     
     numberOfProducts++;
     
     system("cls");
-    printf("\n->Produit ajouter avec succees !! \n\n");
+    printf("\n-> Produit ajouter avec succees !! \n\n");
 		
 	}
 	sleep(1);
@@ -193,7 +197,7 @@ void addMultipleProducts(){
 	chooseAnItem();
 }
 
-//AFFICHER TOUT LES PRODUITS
+//6- AFFICHER TOUT LES PRODUITS
 void ShowProducts(){
 	//if : pour si il n y a pas de produit ajouter sur le systeme sa retourne au menu automatiquement apres 4 secondes
 	if(numberOfProducts==0){
@@ -218,7 +222,7 @@ void ShowProducts(){
 	// CALCULE DU PRIX DU HT EN TTC 15% : products[i].price +((products[i].price)*0.15)
 }
 
-// Fonction de comparaison POUR LE TRIAGE DECROISSANT
+//7- Fonction de comparaison POUR LE TRIAGE DECROISSANT
 int compare(const void *x_void, const void *y_void)
 {
  
@@ -228,7 +232,7 @@ int compare(const void *x_void, const void *y_void)
   return y - x;
 }
 
-//rechercher un produit avec son code
+//8- rechercher un produit avec son code
 void FindProductByCode(){
 	char ProductCode[20];
 	int i;
@@ -245,7 +249,7 @@ void FindProductByCode(){
 	showMenu();
 	chooseAnItem();
 }
-//recher un produit avec la quantité
+//9- recher un produit avec la quantité
 void FindProductByQuantity(){
 	int ProductQuantity;
 	int i;
@@ -262,7 +266,7 @@ void FindProductByQuantity(){
 	showMenu();
 	chooseAnItem();
 }
-//fontion acheter un produit / deduire du stock
+//10- fontion acheter un produit / deduire du stock
 void BuyAProduct(){
 	//find product by code
 	char ProductCode[20];
@@ -287,7 +291,7 @@ void BuyAProduct(){
 	showMenu();
 	chooseAnItem();
 }
-//fonction ajouter au stock
+//11- fonction ajouter au stock
 void AddToStock(){
 	//find product by code
 	char ProductCode[20];
@@ -312,7 +316,7 @@ void AddToStock(){
 	chooseAnItem();
 }
 
-//fonction pour afficher l etat du stock les produits<3
+//12- fonction pour afficher l etat du stock les produits<3
 void StateOfStock(){
 	int i;
 	
@@ -327,7 +331,7 @@ void StateOfStock(){
 	chooseAnItem();
 }
 
-//FONCTION AFFICHAGE DE TEMPS
+//13- FONCTION AFFICHAGE DE TEMPS
 void Time(){
   int h, min, s, day, mois, an;
   time_t now;
@@ -345,10 +349,24 @@ void Time(){
   day = local->tm_mday;          
   mois = local->tm_mon + 1; // on ajoute +1 car sa commence de 0 
   an = local->tm_year + 1900;  
-;
+  
   printf("\n-> L'heure : %02d:%02d:%02d\n", h, min, s);
 
   // Afficher la date courante
   printf("\n-> La date : %02d/%02d/%d\n", day, mois, an);
 	
+}
+
+//14- FONCTION STATISTIQUE
+void Statistique(){
+	float q;//quantité
+	float p;//prix
+	
+	printf("\n-> Entrer la quantite du produit vendu :");
+	scanf("%f",&q);
+	printf("\n-> Entrer le prix en HT du produit vendu :");
+	scanf("%f",&p);
+	printf("\n-> Le total des prix des produits vendus est :%.2f",(q*p));
+	printf("\n-> La moyenne des prix des produits vendus :%.2f",(q*p)/q);
+
 }
