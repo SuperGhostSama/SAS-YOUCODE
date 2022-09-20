@@ -373,10 +373,10 @@ void Time(){
   mois = local->tm_mon + 1; // on ajoute +1 car sa commence de 0 
   an = local->tm_year + 1900;  
   
-  printf("\n-> L'heure : %02d:%02d:%02d\n", h, min, s);
+  printf("\n-> L'heure : %d:%d:%d\n", h, min, s);
 
   // Afficher la date courante
-  printf("\n-> La date : %02d/%02d/%d\n", day, mois, an);
+  printf("\n-> La date : %d/%d/%d\n", day, mois, an);
 	
 }
 
@@ -392,4 +392,22 @@ void Statistique(){
 	printf("\n-> Le total des prix des produits vendus est :%.2f",(q*p));
 	printf("\n-> La moyenne des prix des produits vendus :%.2f",(q*p)/q);
 
+}
+
+//15- FONCTION SUPPRIMER
+void DeleteProduct(){
+	// rechercher le produit a supprimer par code
+	char ProductCode[20];
+	int i;
+	
+	printf("\n->Entrer le Code du produit : ");
+	scanf("%s",ProductCode);
+	
+	for(i=0;i<numberOfProducts;i++){
+		if (strcmp(products[i].code,ProductCode) == 0 )
+		printf("\n->Code du produit : %s\t ->Nom du produit :%s\t ->Quantite du produit : %d\t ->Prix du produit en HT :%.2f\t ->Prix du produit en TTC :%.2f\n", products[i].code,products[i].name,products[i].quantity,products[i].price,products[i].price +((products[i].price)*0.15));
+	}
+	// la suppression de ce produit
+	
+	
 }
