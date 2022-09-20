@@ -148,6 +148,7 @@ void showPage(int chosenItem) {
             system("cls");
             system("Color 4");//Code couleur 4 = Red / je l ai afficher en rouge car la fonction de statistique n est pas complété est juste provisoir
             printf("\n\t---  NOT AVAILABLE YET  ---\n");
+            printf("\n\t---  THIS IS JUST A TEST  ---\n");
             Statistique();
             system("Pause");
 			system("cls");
