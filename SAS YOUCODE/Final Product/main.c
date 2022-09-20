@@ -138,6 +138,7 @@ void showPage(int chosenItem) {
             system("cls");
             system("Color 4");//Code couleur 4 = Red
             printf("\n\t---  SUPPRIMER PRODUIT  ---\n");
+            printf("\n\t---  NOT AVAILABLE YET  ---\n");
             system("Pause");
 			system("cls");
 			showMenu();
@@ -146,6 +147,7 @@ void showPage(int chosenItem) {
         case 9 :
             system("cls");
             system("Color 4");//Code couleur 4 = Red / je l ai afficher en rouge car la fonction de statistique n est pas complété est juste provisoir
+            printf("\n\t---  NOT AVAILABLE YET  ---\n");
             Statistique();
             system("Pause");
 			system("cls");
