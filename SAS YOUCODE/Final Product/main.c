@@ -57,7 +57,7 @@ void chooseAnItem(){
         
         showPage(chosenItem);
         
-    } while(chosenItem < 1 || chosenItem > 9);
+    } while(chosenItem < 1 || chosenItem > 9); // pour que si le nombre choisi est inferieur a 1 et suppérieur a 9 sa lui demande de rentrer un num (used it before adding the default case in the switch)
 
 }
 
