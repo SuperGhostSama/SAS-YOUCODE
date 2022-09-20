@@ -103,7 +103,27 @@ void showPage(int chosenItem) {
             break;
         case 3 :
             system("cls");
-            ShowProducts();
+            int key;
+            printf("\n\t---  MENU  ---\n");
+            printf("\n> [1] Affichage decroissant par Prix");
+            printf("\n> [2] Affichage selon l ordre alphabetique");
+            scanf("%d",&key);
+            switch (key){
+            	case 1:
+            		system("cls");
+            		ShowProducts();
+            		break;
+            	case 2:
+            		system("cls");
+            		system("Color 4");//Code couleur 4 = Red
+            		printf("\n\t---  ORDRE ALPHABETIQUE  ---\n");
+            		printf("\n\t---  NOT AVAILABLE YET  ---\n");
+            		system("Pause");
+					system("cls");
+					showMenu();
+					chooseAnItem();
+					break;	
+			}
             break;
         case 4 :
             system("cls");
